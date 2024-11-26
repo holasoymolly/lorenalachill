@@ -21,16 +21,15 @@ const EVENT_INFO = [
 export function AboutEvent() {
   return (
     <section className="container mx-auto flex flex-col items-center px-4 py-10">
-      <Typography variant="h6" className="text-center mb-2" color="orange">
+      <Typography variant="h6" className="text-center mb-2" color="orange" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         About the event
       </Typography>
-      <Typography variant="h3" className="text-center" color="blue-gray">
+      <Typography variant="h3" className="text-center" color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         Why Attend?
       </Typography>
       <Typography
         variant="lead"
-        className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal !text-gray-500"
-      >
+        className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal !text-gray-500" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}      >
         Welcome to the AI Conference 2023, where the future unfolds! Whether
         you&apos;re a seasoned AI professional, a curious newcomer, or a
         business leader looking to harness the power of AI, this conference is
