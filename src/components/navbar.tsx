@@ -50,7 +50,7 @@ const NAV_MENU = [
     href: "/calendar", // Ruta a la página "Calendar"
   },
   {
-    name: "Preguntas Frequentes",
+    name: "Preguntas Frecuentes",
     href: "/faq", // Ruta a la página "FAQ"
   },
   {
@@ -124,7 +124,7 @@ export function Navbar() {
   <a href="https://www.material-tailwind.com/blocks" target="_blank">
   <Button
   color="white"
-  className="text-[#F15927] transition-colors duration-300 hover:bg-[#F15927] hover:text-white"
+  className="text-[#F15927] transition-colors duration-300 hover:bg-[#F15927] hover:text-white py-2 px-5 rounded-full"
   placeholder={undefined}
   onPointerEnterCapture={undefined}
   onPointerLeaveCapture={undefined}
