@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Icon } from "@iconify/react"; // Importación del componente Iconify
+import { Icon } from "@iconify/react";
 import { Navbar as MTNavbar, IconButton, Typography } from "@material-tailwind/react";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 
@@ -17,7 +17,7 @@ function NavItem({ children, href }: NavItemProps) {
         href={href || "#"}
         target={href ? "_blank" : "_self"}
         variant="paragraph"
-        className="flex items-center gap-2 font-medium text-white transition-colors duration-300 hover:text-[#F15927]"
+        className="flex items-center gap-2 font-medium text-white transition-colors duration-300 hover:text-[#F15927]" 
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
@@ -36,28 +36,22 @@ const NAV_MENU = [
 ];
 
 export function Navbar() {
-  const [open, setOpen] = React.useState(false);
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [lastScrollY, setLastScrollY] = React.useState(0);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
 
-  const handleOpen = () => setOpen((cur) => !cur);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      const heroSection = document.querySelector(".hero-section");
+      if (heroSection) {
+        const { top, bottom } = heroSection.getBoundingClientRect();
+        setIsHeroVisible(top < window.innerHeight && bottom > 0);
       }
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <MTNavbar
@@ -65,7 +59,7 @@ export function Navbar() {
       fullWidth
       blurred={false}
       color="transparent"
-      className={`fixed top-0 z-50 border-0 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${isHeroVisible ? "translate-y-0" : "-translate-y-full"}`}
       style={{
         height: "6rem",
         overflow: "hidden",
@@ -101,7 +95,7 @@ export function Navbar() {
         <div className="hidden items-center gap-4 lg:flex h-full">
           {/* Redes sociales con Iconify */}
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/lorenalachill"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white transition-transform duration-300 hover:text-[#F15927]"
@@ -109,7 +103,7 @@ export function Navbar() {
             <Icon icon="mdi:instagram" className="text-xl" />
           </a>
           <a
-            href="https://www.tiktok.com"
+            href="https://www.tiktok.com/@lorenalachill"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white transition-transform duration-300 hover:text-[#F15927]"
@@ -117,7 +111,7 @@ export function Navbar() {
             <Icon icon="ic:baseline-tiktok" className="text-xl" />
           </a>
           <a
-            href="https://www.youtube.com"
+            href="https://www.youtube.com/channel/UCmCTPMQbZ9PHVa6RPMdcPFw"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white transition-transform duration-300 hover:text-[#F15927]"
@@ -125,7 +119,7 @@ export function Navbar() {
             <Icon icon="mdi:youtube" className="text-xl" />
           </a>
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/profile.php?id=100063971891016"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white transition-transform duration-300 hover:text-[#F15927]"
@@ -136,13 +130,13 @@ export function Navbar() {
         <IconButton
           variant="text"
           color="white"
-          onClick={handleOpen}
+          onClick={() => { } }
           className="ml-auto inline-block lg:hidden"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
           >
-          {open ? (
+          {true ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />
           ) : (
             <Bars3Icon strokeWidth={2} className="h-6 w-6" />
