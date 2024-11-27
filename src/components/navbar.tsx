@@ -29,10 +29,10 @@ function NavItem({ children, href }: NavItemProps) {
 }
 
 const NAV_MENU = [
-  { name: "Sobre mí", href: "/about" },
-  { name: "Calendario", href: "/calendar" },
-  { name: "Preguntas Frecuentes", href: "/faq" },
-  { name: "Contacto", href: "/contact" },
+  { name: "Sobre mí", href: "/sobremi" },
+  { name: "Calendario", href: "/calendario" },
+  { name: "Preguntas Frecuentes", href: "/preguntasfrecuentes" },
+  { name: "Contacto", href: "/contacto" },
 ];
 
 export function Navbar() {
@@ -76,7 +76,7 @@ export function Navbar() {
       >
       <div className="container mx-auto flex items-center justify-between h-full">
         <div className="flex items-center h-full">
-          <Link href="/" className="relative group block">
+          <Link href="/" className="relative group block hover:scale-105">
             <img
               src="/logos/lorena-la-chill-logo-blanco.webp"
               alt="Lorena La Chill Logo"

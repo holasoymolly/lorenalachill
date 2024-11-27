@@ -4,7 +4,7 @@ import { Button, Typography } from "@material-tailwind/react";
 
 function Hero() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="hero-section relative min-h-screen w-full">
       {/* Video de fondo */}
       <video
         src="/videos/lorena-valentina-meditacion.mp4"
