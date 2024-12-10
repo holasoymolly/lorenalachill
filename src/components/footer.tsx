@@ -1,80 +1,83 @@
-import { Typography, Button, IconButton } from "@material-tailwind/react";
+import React from "react";
+import Link from "next/link";
+import { Icon } from "@iconify/react";
+import { Typography } from "@material-tailwind/react";
 
-const CURRENT_YEAR = new Date().getFullYear();
-const LINKS = ["Company", "About Us", "Team", "Products", "Blog"];
+const NAV_MENU = [
+  { name: "Sobre mí", href: "/sobremi" },
+  { name: "Calendario", href: "/calendario" },
+  { name: "Preguntas Frecuentes", href: "/preguntasfrecuentes" },
+  { name: "Contacto", href: "/contacto" },
+];
 
 export function Footer() {
   return (
-    <footer className="pb-5 p-10 md:pt-10">
-      <div className="container flex flex-col mx-auto">
-        <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5 ">
-          <Typography
-            className="text-2xl md:text-3xl text-center font-bold "
-            color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
-            Join now and get 30% OFF!
-          </Typography>
-          <Typography
-            color="white"
-            className=" md:w-7/12 text-center my-3 !text-base" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
-            Don&apos;t miss out on this exclusive offer that will end soon.
-          </Typography>
-          <div className="flex w-full md:w-fit gap-3 mt-2 flex-col md:flex-row">
-            <Button color="white" size="md" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              buy ticket
-            </Button>
-          </div>
+    <footer className="bg-transparent py-6 mt-10"> {/* Agregado mt-10 para margen superior */}
+      <div className="container mx-auto flex items-center justify-between h-full">
+        {/* Logo */}
+        <div className="flex items-center h-full">
+          <Link href="/" className="relative group block">
+            <img
+              src="/logos/lorena-la-chill-logo-naranja.webp"
+              alt="Lorena La Chill Logo"
+              className="h-12 w-auto transition-transform duration-300 hover:scale-110" // Logo agrandado a h-12 y efecto de zoom aumentado
+            />
+          </Link>
         </div>
-        <div className="flex flex-col md:flex-row items-center !justify-between">
-          <Typography
-            as="a"
-            href="https://www.material-tailwind.com"
+
+        {/* Menú */}
+        <ul className="flex items-center gap-20 text-[#F15927] h-full">
+          {NAV_MENU.map(({ name, href }) => (
+            <li key={name}>
+              <Typography
+                as="a"
+                href={href}
+                variant="paragraph"
+                className="flex items-center gap-1 font-medium text-sm text-[#F15927] transition-all duration-300"
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}              >
+                {name}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+
+        {/* Redes Sociales */}
+        <div className="flex items-center gap-3 h-full">
+          <a
+            href="https://www.instagram.com/lorenalachill"
             target="_blank"
-            variant="h6"
-            className="text-gray-900" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
-            Material Tailwind
-          </Typography>
-          <ul className="flex justify-center my-4 md:my-0 w-max mx-auto items-center gap-4">
-            {LINKS.map((link, index) => (
-              <li key={index}>
-                <Typography
-                  as="a"
-                  href="#"
-                  variant="small"
-                  color="white"
-                  className="font-normal !text-gray-700 hover:!text-gray-900 transition-colors" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                >
-                  {link}
-                </Typography>
-              </li>
-            ))}
-          </ul>
-          <div className="flex w-fit justify-center gap-2">
-            <IconButton size="sm" color="gray" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              <i className="fa-brands fa-twitter text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              <i className="fa-brands fa-youtube text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              <i className="fa-brands fa-instagram text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              <i className="fa-brands fa-github text-lg" />
-            </IconButton>
-          </div>
-        </div>
-        <Typography
-          color="blue-gray"
-          className="text-center mt-12 font-normal !text-gray-700" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
-          &copy; {CURRENT_YEAR} Made with{" "}
-          <a href="https://www.material-tailwind.com" target="_blank">
-            Material Tailwind
-          </a>{" "}
-          by{" "}
-          <a href="https://www.creative-tim.com" target="_blank">
-            Creative Tim
+            rel="noopener noreferrer"
+            className="text-[#F15927] transition-all duration-300"
+          >
+            <Icon icon="mdi:instagram" className="text-xl" />
           </a>
-          .
-        </Typography>
+          <a
+            href="https://www.tiktok.com/@lorenalachill"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#F15927] transition-all duration-300"
+          >
+            <Icon icon="ic:baseline-tiktok" className="text-xl" />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCmCTPMQbZ9PHVa6RPMdcPFw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#F15927] transition-all duration-300"
+          >
+            <Icon icon="mdi:youtube" className="text-xl" />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100063971891016"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#F15927] transition-all duration-300"
+          >
+            <Icon icon="mdi:facebook" className="text-xl" />
+          </a>
+        </div>
       </div>
     </footer>
   );
