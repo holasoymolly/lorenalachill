@@ -21,19 +21,22 @@ const EVENT_INFO = [
 export function AboutEvent() {
   return (
     <section className="container mx-auto flex flex-col items-center px-4 py-10">
-      <Typography variant="h6" className="text-center mb-2" color="orange" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        About the event
-      </Typography>
-      <Typography variant="h3" className="text-center" color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        Why Attend?
+      <Typography variant="h3"
+      className="text-center text-[#F15927]"
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
+      >
+        ¿Por qué es bueno practicar Yoga?
       </Typography>
       <Typography
-        variant="lead"
-        className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal !text-gray-500" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}      >
-        Welcome to the AI Conference 2023, where the future unfolds! Whether
-        you&apos;re a seasoned AI professional, a curious newcomer, or a
-        business leader looking to harness the power of AI, this conference is
-        designed to inspire, educate, and connect.
+        variant="h6"
+        className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal !text-gray-700"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+        >
+        Hacer yoga de manera constante no solo mejora la flexibilidad y fuerza física, sino que también promueve un equilibrio mental y emocional. La práctica regular ayuda a reducir el estrés, aumenta la concentración y fomenta una conexión más profunda entre el cuerpo y la mente, lo que mejora la calidad de vida y el bienestar general. Además, el yoga permite cultivar la paciencia y la autoaceptación, creando una sensación de paz interior.
       </Typography>
       <div className="mt-8 w-full grid grid-cols-1 md:grid-cols-2 gap-4 ">
         {EVENT_INFO.map((props, idx) => (
