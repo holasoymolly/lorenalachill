@@ -134,10 +134,6 @@ export default function SobreMi() {
     ))}
   </div>
 </div>
-
- {/* Divider Line */}
- <hr className="border-t border-[#F15927] mx-auto w-4/5 my-10" />
-
     </section>
   );
 }
