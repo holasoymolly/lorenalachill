@@ -1,7 +1,6 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { Layout, FixedPlugin } from "@/components";
+import { Navbar, Layout, Footer } from "@/components"; // Importa Navbar
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -9,7 +8,7 @@ const roboto = Roboto({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Lorena La Chill | Profesora de Yoga",
   description: "Sígueme y conoce más sobre Yoga y bienestar.",
 };
@@ -22,29 +21,19 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <script
-          defer
-          data-site="www.lorenalachill.com"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
-        <link
-          rel="shortcut icon"
-          href="/image/favicon.webp"
-          type="image/webp"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={metadata.description} />
+        <title>{metadata.title}</title>
+        <link rel="icon" href="/image/favicon.webp" type="image/webp" />
       </head>
       <body className={roboto.className}>
+        {/* Navbar siempre visible */}
+        <Navbar />
         <Layout>
           {children}
-          <FixedPlugin />
         </Layout>
+        <Footer />
       </body>
     </html>
   );
