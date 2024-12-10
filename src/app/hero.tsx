@@ -35,21 +35,33 @@ function Hero() {
         <div className="container relative z-10 mx-auto flex flex-col items-center justify-end text-center pb-20">
           {/* Ajustar posición hacia abajo con padding */}
           <Typography
-            variant="h2"
+            variant="h6"
             color="white"
-            className="mb-2" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mb-0"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+            >
             Taller Presencial
           </Typography>
           <Typography
             variant="h1"
             color="white"
-            className="lg:max-w-3xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="lg:max-w-3xl"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+            >
             Yoga Básico <br /> Para La Vida Cotidiana
           </Typography>
           <Typography
             variant="h5"
             color="white"
-            className="mt-1 mb-8 w-full md:max-w-full lg:max-w-2xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mt-1 mb-8 w-full md:max-w-full lg:max-w-2xl"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+            >
             21 de Diciembre 2024
           </Typography>
           <div className="flex items-center gap-4">
