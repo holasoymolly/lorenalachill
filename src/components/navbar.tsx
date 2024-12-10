@@ -46,7 +46,7 @@ function NavItem({ children, href, external }: NavItemProps) {
 const NAV_MENU = [
   { name: "Sobre mí", href: "/sobremi" },
   { name: "Calendario", href: "https://www.google.com/calendar", external: true },
-  { name: "Preguntas Frecuentes", href: "/preguntasfrecuentes" },
+  { name: "Preguntas Frecuentes", href: "/preguntas-frecuentes" },
   { name: "Contacto", href: "/contacto" },
 ];
 
