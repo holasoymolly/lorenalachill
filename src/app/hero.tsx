@@ -54,7 +54,7 @@ function Hero() {
             <Button
               variant="gradient"
               color="white"
-              className="text-[#F15927] hover:bg-[#F15927] hover:text-white text-lg py-3 px-6 rounded-full mb-40 mt-0"
+              className="bg-white text-[#F15927] hover:bg-[#F15927] hover:text-white text-lg py-3 px-6 rounded-full mb-40 mt-0"
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
