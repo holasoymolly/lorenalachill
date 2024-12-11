@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import { Navbar, Layout, Footer } from "@/components"; // Importa Navbar
+import { useState } from "react";
+import Hero from "@/app/hero";
 
 const roboto = Roboto({
   subsets: ["latin"],
