@@ -5,16 +5,16 @@ import { Typography } from "@material-tailwind/react";
 
 const NAV_MENU = [
   { name: "Sobre mí", href: "/sobremi" },
-  { name: "Calendario", href: "/calendario" },
-  { name: "Preguntas Frecuentes", href: "/preguntasfrecuentes" },
+  { name: "Calendario", href: "https://www.google.com/calendar", external: true },
+  { name: "Preguntas Frecuentes", href: "/preguntas-frecuentes" },
   { name: "Contacto", href: "/contacto" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-transparent py-6 mt-10"> {/* Agregado mt-10 para margen superior */}
-     {/* Divider Line */}
- <hr className="border-t border-[#F15927] mx-auto w-4/5 my-10" />
+      {/* Divider Line */}
+      <hr className="border-t border-[#F15927] mx-auto w-4/5 my-10" />
       <div className="container mx-auto flex items-center justify-between h-full">
         {/* Logo */}
         <div className="flex items-center h-full">
@@ -29,18 +29,25 @@ export function Footer() {
 
         {/* Menú */}
         <ul className="flex items-center gap-20 text-[#F15927] h-full">
-          {NAV_MENU.map(({ name, href }) => (
+          {NAV_MENU.map(({ name, href, external }) => (
             <li key={name}>
-              <Typography
-                as="a"
-                href={href}
-                variant="paragraph"
-                className="flex items-center gap-1 font-medium text-sm text-[#F15927] transition-all duration-300"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}              >
-                {name}
-              </Typography>
+              {external ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 font-medium text-sm text-[#F15927] transition-all duration-300"
+                >
+                  {name}
+                </a>
+              ) : (
+                <Link
+                  href={href}
+                  className="flex items-center gap-1 font-medium text-sm text-[#F15927] transition-all duration-300"
+                >
+                  {name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
