@@ -78,14 +78,15 @@ export function Navbar() {
       fullWidth
       blurred={false}
       color="transparent"
-      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${
-        isSpecialPage ? "bg-[#F15927]" : "bg-transparent"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${isSpecialPage ? "bg-[#F15927]" : "bg-transparent"} ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
       style={{
         height: "6rem",
         overflow: "hidden",
       }}
-    >
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined} 
+      >
       <div className="container mx-auto flex items-center justify-between h-full px-4 lg:px-0">
         {/* Logo */}
         <div className="flex items-center h-full">
