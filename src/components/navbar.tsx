@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
-import { Navbar as MTNavbar, IconButton } from "@material-tailwind/react";
+import { Navbar as MTNavbar } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface NavItemProps {
@@ -49,10 +49,28 @@ const NAV_MENU = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
 
   const isSpecialPage = ["/preguntas-frecuentes", "/contacto"].includes(pathname);
-  const isHomepage = pathname === "/";
+  const isHomepage = pathname === "/sobremi";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const hero = document.querySelector(".hero-section");
+      if (hero) {
+        const heroHeight = hero.clientHeight || 0;
+        setIsVisible(window.scrollY < heroHeight); // Oculta el Navbar al pasar el Hero
+      } else {
+        setIsVisible(true); // Siempre visible si no hay Hero
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <MTNavbar
@@ -60,7 +78,7 @@ export function Navbar() {
       fullWidth
       blurred={false}
       color="transparent"
-      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${isSpecialPage ? "bg-[#F15927]" : "bg-transparent"}`}
+      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${isSpecialPage ? "bg-[#F15927]" : "bg-transparent"} ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
       style={{
         height: "6rem",
         overflow: "hidden",
@@ -152,78 +170,6 @@ export function Navbar() {
             <Icon icon="mdi:facebook" className="text-2xl" />
           </a>
         </div>
-
-        {/* Botón y Menú Móvil */}
-<div className="lg:hidden">
-  <button
-    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-    aria-label="Toggle navigation"
-  >
-    {isMobileMenuOpen ? (
-      <XMarkIcon className="h-6 w-6 text-[#F15927]" />
-    ) : (
-      <Bars3Icon className="h-6 w-6 text-white" />
-    )}
-  </button>
-</div>
-
-{isMobileMenuOpen && (
-  <div className="fixed top-0 left-0 w-full h-screen bg-white z-50">
-    <button
-      onClick={() => setIsMobileMenuOpen(false)}
-      aria-label="Close menu"
-      className="absolute top-6 right-6"
-    >
-      <XMarkIcon className="h-8 w-8 text-[#F15927]" />
-    </button>
-    <ul className="flex flex-col items-center gap-4 pt-20">
-      {NAV_MENU.map(({ name, href, external }) => (
-        <NavItem
-          key={name}
-          href={href}
-          external={external}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <span className="text-[#F15927] hover:scale-110 transition-transform duration-300">
-            {name}
-          </span>
-        </NavItem>
-      ))}
-    </ul>
-
-    {/* Redes sociales en móvil */}
-    <div className="flex justify-center gap-4 mt-8">
-      <a
-        href="https://www.instagram.com/lorenalachill"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon icon="mdi:instagram" className="text-[#F15927] text-2xl" />
-      </a>
-      <a
-        href="https://www.tiktok.com/@lorenalachill"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon icon="ic:baseline-tiktok" className="text-[#F15927] text-2xl" />
-      </a>
-      <a
-        href="https://www.youtube.com/channel/UCmCTPMQbZ9PHVa6RPMdcPFw"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon icon="mdi:youtube" className="text-[#F15927] text-2xl" />
-      </a>
-      <a
-        href="https://www.facebook.com/profile.php?id=100063971891016"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon icon="mdi:facebook" className="text-[#F15927] text-2xl" />
-      </a>
-    </div>
-  </div>
-)}
       </div>
     </MTNavbar>
   );

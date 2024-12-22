@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import { Navbar, Layout, Footer } from "@/components"; // Importa Navbar
-import { useState } from "react";
-import Hero from "@/app/hero";
+import { Navbar } from "@/components/navbar"; // Ruta del Navbar
+import Footer from "@/components/footer"; // Ruta del Footer
+import Layout from "@/components/layout"; // Ruta de tu Layout para ThemeProvider
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -30,12 +30,15 @@ export default function RootLayout({
         <link rel="icon" href="/image/favicon.webp" type="image/webp" />
       </head>
       <body className={roboto.className}>
-        {/* Navbar siempre visible */}
-        <Navbar />
+        {/* Usa el ThemeProvider del Layout */}
         <Layout>
-          {children}
+          {/* Navbar siempre visible */}
+          <Navbar />
+          {/* Contenido de la página */}
+          <main>{children}</main>
+          {/* Footer */}
+          <Footer />
         </Layout>
-        <Footer />
       </body>
     </html>
   );
