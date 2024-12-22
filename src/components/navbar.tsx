@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { Navbar as MTNavbar } from "@material-tailwind/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -53,17 +52,18 @@ export function Navbar() {
   const pathname = usePathname();
 
   const isSpecialPage = ["/preguntas-frecuentes", "/contacto"].includes(pathname);
-  const isHomepage = pathname === "/sobremi";
+  const isHomepage = ["/", "/sobremi"];
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = document.querySelector(".hero-section");
-      if (hero) {
-        const heroHeight = hero.clientHeight || 0;
-        setIsVisible(window.scrollY < heroHeight); // Oculta el Navbar al pasar el Hero
-      } else {
-        setIsVisible(true); // Siempre visible si no hay Hero
+      const heroHeight = document.querySelector(".hero-section")?.clientHeight || 0;
+      // Mostrar siempre el navbar si el Hero no existe
+      if (!heroHeight) {
+        setIsVisible(true);
+        return;
       }
+      // Ocultar o mostrar el navbar dependiendo del scroll
+      setIsVisible(window.scrollY < heroHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -78,15 +78,14 @@ export function Navbar() {
       fullWidth
       blurred={false}
       color="transparent"
-      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${isSpecialPage ? "bg-[#F15927]" : "bg-transparent"} ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-0 z-50 border-0 transition-transform duration-500 ${
+        isSpecialPage ? "bg-[#F15927]" : "bg-transparent"
+      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
       style={{
         height: "6rem",
         overflow: "hidden",
       }}
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-      >
+    >
       <div className="container mx-auto flex items-center justify-between h-full px-4 lg:px-0">
         {/* Logo */}
         <div className="flex items-center h-full">
@@ -105,7 +104,7 @@ export function Navbar() {
                 alt="Lorena La Chill Logo Hover"
                 style={{ height: "3.80rem", width: "auto" }}
                 className={`absolute top-0 left-0 transition-opacity duration-300 opacity-0 ${
-                  isHomepage ? "group-hover:opacity-100 hover:scale-105" : ""
+                  isHomepage ? "group-hover:opacity-100 group-hover:scale-110" : ""
                 }`}
               />
             )}
