@@ -65,14 +65,24 @@ function Hero() {
             21 de Diciembre 2024
           </Typography>
           <div className="flex items-center gap-4">
-            <Button
-              variant="gradient"
-              color="white"
-              size="sm"
-              className="bg-white text-[#F15927] hover:bg-[#F15927] hover:text-white text-lg px-6 rounded-full mb-40 mt-0 normal-case" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
-              Inscríbete aquí
-            </Button>
-          </div>
+          <a
+          href="https://example.com" // Cambia por el enlace externo deseado
+          target="_blank"
+          rel="noopener noreferrer"
+          >
+          <Button
+                variant="gradient"
+                color="white"
+                size="sm"
+                className="bg-white text-[#F15927] hover:bg-[#F15927] hover:text-white text-lg px-6 rounded-full mb-40 mt-0 normal-case" 
+                placeholder={undefined} 
+                onPointerEnterCapture={undefined} 
+                onPointerLeaveCapture={undefined}    
+                >
+          Inscríbete aquí
+          </Button>
+          </a>
+        </div>
         </div>
       </div>
       {/* Botón flotante */}
